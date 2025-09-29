@@ -29,6 +29,7 @@
     "@tauri-apps/plugin-updater": "^2.7.0",
     "@tauri-apps/plugin-websocket": "~2",
     "axios": "^1.8.1",
+    "bun": "^1.2.23",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.4.7",
@@ -41,6 +42,7 @@
     "tailwind-merge": "^3.0.2",
     "tailwindcss-3d": "^1.0.7",
     "tailwindcss-animate": "^1.0.7",
+    "tauri": "^0.15.0",
     "tsparticles": "^3.8.1",
     "zustand": "^5.0.3"
   },

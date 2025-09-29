@@ -246,7 +246,7 @@ export default function Login() {
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3 }}
                   className="flex items-center">
-                  Connected
+                  Thanks for playing Solaris!
                   <CheckCircle className="ml-2 h-5 w-5" />
                 </motion.div>
               ) : (
@@ -258,13 +258,13 @@ export default function Login() {
                   transition={{ duration: 0.3 }}
                   className="flex items-center">
                   <LogIn className="mr-2 h-5 w-5" />
-                  Connect with Discord
+                  Login with Discord
                 </motion.div>
               )}
             </AnimatePresence>
           </motion.button>
 
-          {renderUpdateStatus()}
+          {/*{renderUpdateStatus()}      (Disables update check)       */}
         </div>
       </div>
     </div>

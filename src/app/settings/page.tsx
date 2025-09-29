@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { User, Info, LogOut, Loader2, Pencil } from "lucide-react";
+import { User, Info, LogOut, Loader2, Pencil, ShieldUser } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -47,14 +47,12 @@ const Switch: React.FC<SwitchProps> = ({ checked, onChange, label }) => {
     <div className="flex items-center justify-between">
       {label && <span className="text-gray-400">{label}</span>}
       <div
-        className={`relative inline-block w-12 h-6 rounded-full cursor-pointer transition-colors duration-200 ease-in-out ${
-          checked ? "bg-purple-600" : "bg-gray-600"
-        }`}
+        className={`relative inline-block w-12 h-6 rounded-full cursor-pointer transition-colors duration-200 ease-in-out ${checked ? "bg-purple-600" : "bg-gray-600"
+          }`}
         onClick={() => onChange(!checked)}>
         <span
-          className={`absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform duration-200 ease-in-out ${
-            checked ? "transform translate-x-6" : ""
-          }`}
+          className={`absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform duration-200 ease-in-out ${checked ? "transform translate-x-6" : ""
+            }`}
         />
       </div>
     </div>
@@ -72,10 +70,21 @@ export default function Settings() {
   const [filecheck, setFileCheck] = useState(buildState.FileCheck);
   const [disablePreEdit, setDisablePreEdit] = useState(buildState.DisablePreEdits);
   const [bubbleBuilds, setBubbleBuilds] = useState(buildState.BubbleBuilds);
+  const allowedDevIds = [
+    "1197030191306899490",
+  ];
+
   const settingsTabs = [
     { name: "General", icon: User },
+    ...(allowedDevIds.includes(auth.user?.discordId ?? "")
+      ? [{ name: "Developer Settings", icon: ShieldUser }]
+      : []),
     { name: "About", icon: Info },
   ];
+
+
+
+
 
   const handleLogout = () => {
     console.log("Logging out...");
@@ -159,7 +168,7 @@ export default function Settings() {
                   <CardContent className="flex items-center justify-between">
                     <div className="flex items-center space-x-4">
                       <img
-                        src={auth.user?.profilePicture || "/placeholder.svg"}
+                        src={auth.user?.profilePicture || "https://github.com/Solarisfortnite/SolarisImages/blob/main/PlaceHolder-icon.png?raw=true"}
                         alt="Profile picture"
                         className="w-12 h-12 rounded-full bg-gray-700 text-gray-400 flex items-center justify-center text-xl font-bold"
                       />
@@ -169,16 +178,7 @@ export default function Settings() {
                           {Array.isArray(auth.user?.roles) &&
                             auth.user.roles.some((role) =>
                               [
-                                "1348073375108436028",
-                                "1327061056941592657",
-                                "1348073609687601273",
-                                "1348073577953624124",
-                                "1348073653564084338",
-                                "1356408914144399421",
-                                "1326903293275934841",
-                                "1326906818366013451",
-                                "1349804908064407704",
-                                "1326902806992523356",
+                                "",
                               ].includes(role)
                             ) && (
                               <Dialog>
@@ -255,9 +255,10 @@ export default function Settings() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-[#2a1e36]/40 shadow-lg backdrop-blur-sm border border-[#3d2a4f]/50  text-gray-400">
+                {/*<Card className="bg-[#2a1e36]/40 shadow-lg backdrop-blur-sm border border-[#3d2a4f]/50  text-gray-400">
                   <CardHeader>
                     <CardTitle className="text-gray-400 text-xl">Preferences</CardTitle>
+                    <br />
                   </CardHeader>
                   <CardContent className="space-y-6">
                     {/* <Switch
@@ -265,34 +266,43 @@ export default function Settings() {
                       onChange={handleEditOnReleaseChange}
                       label="Edit On Release"
                     /> */}
-                    <Switch
+                {/*<Switch
                       checked={resetOnRelease}
                       onChange={handleResetOnReleaseChange}
                       label="Reset On Release"
-                    />
-                    {/* <Switch
+                    />*/}
+                {/* <Switch
                       checked={disablePreEdit}
                       onChange={handleDisablePreEditChange}
                       label="Disable Pre-Edits"
                     /> */}
-                    <Switch
+                {/* <Switch
                       checked={bubbleBuilds}
                       onChange={handleBubbleBuildsChange}
                       label="Bubble Wrap Builds"
                     />
-                    {Array.isArray(auth.user?.roles) &&
-                      auth.user.roles.some((role) =>
-                        ["1349804908064407704", "1326906818366013451"].includes(role)
-                      ) && (
-                        <Switch
-                          checked={filecheck}
-                          onChange={handleDisableFileCheckChanged}
-                          label="Disable File Check"
-                        />
-                      )}
                   </CardContent>
-                </Card>
+                </Card> */}
               </div>
+            </TabsContent>
+            <TabsContent value="Developer Settings">
+              <Card className="bg-[#2a1e36]/40 shadow-lg backdrop-blur-sm border border-[#3d2a4f]/50 text-gray-400">
+                <CardHeader>
+                  <CardTitle className="text-gray-400">Developer Settings</CardTitle>
+                  <br />
+                  <Switch
+                    checked={filecheck}
+                    onChange={handleDisableFileCheckChanged}
+                    label="Disable Pak File Check"
+                  />
+                  {/*<Switch
+                    checked={filecheck}
+                    onChange={handleDisableFileCheckChanged}
+                    label="Label"
+                  />*/}
+                </CardHeader>
+                <CardContent className="flex items-center justify-between"></CardContent>
+              </Card>
             </TabsContent>
             <TabsContent value="About">
               <Card className="bg-[#2a1e36]/40 shadow-lg backdrop-blur-sm border border-[#3d2a4f]/50 text-gray-400">

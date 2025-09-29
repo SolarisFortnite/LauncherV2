@@ -110,6 +110,17 @@ export default function Home() {
                 <h3 className="font-medium text-white">{auth.user?.displayName}</h3>
                 <span className="text-xs text-gray-300">Online</span>
               </div>
+              <br />
+              <div className="flex items-center space-x-0.5">
+                <img
+                  src="https://github.com/Solarisfortnite/SolarisImages/blob/main/vbucks.png?raw=true"
+                  alt="V-Bucks"
+                  className="w-6 h-6"
+                />
+                <span className="text-sm text-white">
+                  {auth.common_core?.vBucks ?? 0}
+                </span>
+              </div>
             </div>
           </div>
         </div>
