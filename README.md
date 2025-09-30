@@ -11,4 +11,4 @@
 
 # Contribute
 
-We welcome contributions! If you'd like to help improve the application, please make fork and make a pull request!
+We welcome contributions! If you'd like to help improve the application, please make fork and make a pull request! **ALL OF UR CODE IN SAID REQUEST WILL BE REVIEWED FOR THE SECURITY OF OUR USERS**
