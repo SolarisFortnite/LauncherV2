@@ -71,14 +71,12 @@ export default function Settings() {
   const [disablePreEdit, setDisablePreEdit] = useState(buildState.DisablePreEdits);
   const [bubbleBuilds, setBubbleBuilds] = useState(buildState.BubbleBuilds);
   const allowedDevIds = [
-    "1197030191306899490",
-    "1184914618854944768",
     "853422984861712430",
+    "1184914618854944768",
+    "1197030191306899490",
   ];
   const allowedAccessRoleIds = [
-    "1197030191306899490",
-    "1184914618854944768",
-    "853422984861712430",
+    "0",
   ];
 
   const settingsTabs = [
