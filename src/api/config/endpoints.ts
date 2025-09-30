@@ -1,7 +1,7 @@
 const baseUrl =
   process.env.NODE_ENV === "development"
-    ? "https://horizion-gateway-service-v3.fmod.dev"
-    : "https://horizion-gateway-service-v3.fmod.dev";
+    ? "https://horizion-gateway-service-v3.solarisfn.org"
+    : "https://horizion-gateway-service-v3.solarisfn.org";
 
 export const endpoints = {
   GET_BASE_URL: baseUrl,
@@ -28,6 +28,6 @@ export const endpoints = {
   CONNECT_XMPP_URL: `ws://155.2.192.112:85`,
 
   // fortnite service
-  GET_EXCHANGE_CODE: `https://horizion-gateway-service-v3.fmod.dev/account/api/oauth/exchange`,
-  GET_ASTERIA_TOKEN: `https://horizion-gateway-service-v3.fmod.dev/asteria/api/login`,
+  GET_EXCHANGE_CODE: `${baseUrl}/account/api/oauth/exchange`,
+  GET_ASTERIA_TOKEN: `${baseUrl}/asteria/api/login`,
 };

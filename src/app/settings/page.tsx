@@ -72,6 +72,13 @@ export default function Settings() {
   const [bubbleBuilds, setBubbleBuilds] = useState(buildState.BubbleBuilds);
   const allowedDevIds = [
     "1197030191306899490",
+    "1184914618854944768",
+    "853422984861712430",
+  ];
+  const allowedAccessRoleIds = [
+    "1197030191306899490",
+    "1184914618854944768",
+    "853422984861712430",
   ];
 
   const settingsTabs = [
@@ -175,50 +182,43 @@ export default function Settings() {
                       <div>
                         <div className="flex items-center space-x-2">
                           <h3 className="text-gray-400 font-semibold">{auth.user?.displayName}</h3>
-                          {Array.isArray(auth.user?.roles) &&
-                            auth.user.roles.some((role) =>
-                              [
-                                "",
-                              ].includes(role)
-                            ) && (
-                              <Dialog>
-                                <DialogTrigger asChild>
-                                  <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
-                                    <Pencil className="h-4 w-4 text-gray-400" />
-                                  </Button>
-                                </DialogTrigger>
-                                <DialogContent className="bg-[#141414] text-gray-400 border-b-1 border-[#2c2d32]">
-                                  <DialogHeader>
-                                    <DialogTitle className="text-gray-400">
-                                      Edit Username
-                                    </DialogTitle>
-                                    <DialogDescription className="text-gray-400">
-                                      Enter your new username below.
-                                    </DialogDescription>
-                                  </DialogHeader>
-                                  <div className="grid gap-4 py-4">
-                                    <div className="grid grid-cols-4 items-center gap-4">
-                                      <Label htmlFor="name" className="text-right text-gray-400">
-                                        Username
-                                      </Label>
-                                      <Input
-                                        id="name"
-                                        value={newUsername}
-                                        onChange={handleUsernameChange}
-                                        className="col-span-3 bg-[#0a0a0a] text-gray-400 border-[#2c2d32]"
-                                      />
-                                    </div>
+                          {/*{allowedAccessRoleIds.includes(auth.user?.discordId ?? "") && (
+                            <Dialog>
+                              <DialogTrigger asChild>
+                                <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                                  <Pencil className="h-4 w-4 text-gray-400" />
+                                </Button>
+                              </DialogTrigger>
+                              <DialogContent className="bg-[#141414] text-gray-400 border-b-1 border-[#2c2d32]">
+                                <DialogHeader>
+                                  <DialogTitle className="text-gray-400">Edit Username</DialogTitle>
+                                  <DialogDescription className="text-gray-400">
+                                    Enter your new username below.
+                                  </DialogDescription>
+                                </DialogHeader>
+                                <div className="grid gap-4 py-4">
+                                  <div className="grid grid-cols-4 items-center gap-4">
+                                    <Label htmlFor="name" className="text-right text-gray-400">
+                                      Username
+                                    </Label>
+                                    <Input
+                                      id="name"
+                                      value={newUsername}
+                                      onChange={handleUsernameChange}
+                                      className="col-span-3 bg-[#0a0a0a] text-gray-400 border-[#2c2d32]"
+                                    />
                                   </div>
-                                  <DialogFooter>
-                                    <Button
-                                      onClick={handleUsernameSubmit}
-                                      className="bg-purple-600 hover:bg-purple-700 text-gray-400">
-                                      Save Changes
-                                    </Button>
-                                  </DialogFooter>
-                                </DialogContent>
-                              </Dialog>
-                            )}
+                                </div>
+                                <DialogFooter>
+                                  <Button
+                                    onClick={handleUsernameSubmit}
+                                    className="bg-purple-600 hover:bg-purple-700 text-gray-400"
+                                  >
+                                    Save Changes
+                                  </Button>
+                                </DialogFooter>
+                              </DialogContent>
+                            </Dialog>*/}
                         </div>
                         <p className="text-sm text-gray-400">{auth.user?.accountId}</p>
                       </div>
@@ -255,40 +255,89 @@ export default function Settings() {
                   </CardContent>
                 </Card>
 
-                {/*<Card className="bg-[#2a1e36]/40 shadow-lg backdrop-blur-sm border border-[#3d2a4f]/50  text-gray-400">
+                <Card className="bg-[#2a1e36]/40 shadow-lg backdrop-blur-sm border border-[#3d2a4f]/50  text-gray-400">
                   <CardHeader>
-                    <CardTitle className="text-gray-400 text-xl">Preferences</CardTitle>
-                    <br />
+                    <CardTitle className="text-gray-400 text-xl">Preferences (Not Implemented Yet)</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-6">
-                    {/* <Switch
+                    {/*<Switch
                       checked={editOnRelease}
                       onChange={handleEditOnReleaseChange}
-                      label="Edit On Release"
-                    /> */}
-                {/*<Switch
+                      label="Edit On Release (Not Implemented Yet)"
+                    />
+                    {/*<Switch
                       checked={resetOnRelease}
                       onChange={handleResetOnReleaseChange}
                       label="Reset On Release"
                     />*/}
-                {/* <Switch
+                    {/*<Switch
                       checked={disablePreEdit}
                       onChange={handleDisablePreEditChange}
                       label="Disable Pre-Edits"
-                    /> */}
-                {/* <Switch
+                    />*/}
+                    {/*<Switch
                       checked={bubbleBuilds}
                       onChange={handleBubbleBuildsChange}
-                      label="Bubble Wrap Builds"
-                    />
+                      label="Bubble Wrap Builds (Not Implemented Yet)"
+                    />*/}
                   </CardContent>
-                </Card> */}
+                </Card>
               </div>
             </TabsContent>
             <TabsContent value="Developer Settings">
               <Card className="bg-[#2a1e36]/40 shadow-lg backdrop-blur-sm border border-[#3d2a4f]/50 text-gray-400">
                 <CardHeader>
-                  <CardTitle className="text-gray-400">Developer Settings</CardTitle>
+                  <CardTitle className="text-gray-400">Account</CardTitle>
+                  <div>
+                    <div className="flex items-center space-x-2">
+                      Username:<br /><p className="text-sm text-gray-500">{auth.user?.displayName}</p>
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                            <Pencil className="h-4 w-4 text-gray-400" />
+                          </Button>
+                        </DialogTrigger>
+                        <DialogContent className="bg-[#141414] text-gray-400 border-b-1 border-[#2c2d32]">
+                          <DialogHeader>
+                            <DialogTitle className="text-gray-400">Edit Username</DialogTitle>
+                            <DialogDescription className="text-gray-400">
+                              Enter your new username below.
+                            </DialogDescription>
+                          </DialogHeader>
+                          <div className="grid gap-4 py-4">
+                            <div className="grid grid-cols-4 items-center gap-4">
+                              <Label htmlFor="name" className="text-right text-gray-400">
+                                Username
+                              </Label>
+                              <Input
+                                id="name"
+                                value={newUsername}
+                                onChange={handleUsernameChange}
+                                className="col-span-3 bg-[#0a0a0a] text-gray-400 border-[#2c2d32]"
+                              />
+                            </div>
+                          </div>
+                          <DialogFooter>
+                            <Button
+                              onClick={handleUsernameSubmit}
+                              className="bg-purple-600 hover:bg-purple-700 text-gray-400"
+                            >
+                              Save Changes
+                            </Button>
+                          </DialogFooter>
+                        </DialogContent>
+                      </Dialog>
+                    </div>
+                    Account ID:<p className="text-sm text-gray-500">{auth.user?.accountId}</p>
+                    Account Email:<p className="text-sm text-gray-500">{auth.user?.email}</p>
+                  </div>
+                </CardHeader>
+                <CardContent className="flex items-center justify-between"></CardContent>
+              </Card>
+              <br />
+              <Card className="bg-[#2a1e36]/40 shadow-lg backdrop-blur-sm border border-[#3d2a4f]/50 text-gray-400">
+                <CardHeader>
+                  <CardTitle className="text-gray-400">Preferences</CardTitle>
                   <br />
                   <Switch
                     checked={filecheck}
