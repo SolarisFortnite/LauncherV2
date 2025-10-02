@@ -70,26 +70,33 @@ export default function Settings() {
   const [filecheck, setFileCheck] = useState(buildState.FileCheck);
   const [disablePreEdit, setDisablePreEdit] = useState(buildState.DisablePreEdits);
   const [bubbleBuilds, setBubbleBuilds] = useState(buildState.BubbleBuilds);
-  const allowedDevIds = [
-    "853422984861712430",
-    "1184914618854944768",
-    "1197030191306899490",
+
+  const allowedAccessDevRoleIds = [
+    "1421380425745567775", // Developer Role
+    "1326899003463307285", // * Role
+    "1421643038316560414", // yes Role
   ];
+
   const allowedAccessRoleIds = [
-    "0",
+    "1421380425745567775", // Developer Role
+    "1326899003463307285", // * Role
+    "1421643038316560414", // yes Role
+
+    "1421383344591212634", // All Star Donator
+    "1348073653564084338", // Mythic Donator
+    "1348073577953624124", // Exclusive Donator
+    "1348073609687601273", // Gold Donator
+    "1327061056941592657", // Platinum Donator
+    "1348073375108436028", // Rare Donator
   ];
 
   const settingsTabs = [
     { name: "General", icon: User },
-    ...(allowedDevIds.includes(auth.user?.discordId ?? "")
+    ...(auth.user?.roles?.some(role => allowedAccessDevRoleIds.includes(role))
       ? [{ name: "Developer Settings", icon: ShieldUser }]
       : []),
     { name: "About", icon: Info },
   ];
-
-
-
-
 
   const handleLogout = () => {
     console.log("Logging out...");
@@ -180,7 +187,7 @@ export default function Settings() {
                       <div>
                         <div className="flex items-center space-x-2">
                           <h3 className="text-gray-400 font-semibold">{auth.user?.displayName}</h3>
-                          {/*{allowedAccessRoleIds.includes(auth.user?.discordId ?? "") && (
+                          {auth.user?.roles?.some(role => allowedAccessRoleIds.includes(role)) && (
                             <Dialog>
                               <DialogTrigger asChild>
                                 <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
@@ -216,7 +223,8 @@ export default function Settings() {
                                   </Button>
                                 </DialogFooter>
                               </DialogContent>
-                            </Dialog>*/}
+                            </Dialog>
+                          )}
                         </div>
                         <p className="text-sm text-gray-400">{auth.user?.accountId}</p>
                       </div>
@@ -253,12 +261,12 @@ export default function Settings() {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-[#2a1e36]/40 shadow-lg backdrop-blur-sm border border-[#3d2a4f]/50  text-gray-400">
+                {/*<Card className="bg-[#2a1e36]/40 shadow-lg backdrop-blur-sm border border-[#3d2a4f]/50  text-gray-400">
                   <CardHeader>
                     <CardTitle className="text-gray-400 text-xl">Preferences (Not Implemented Yet)</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-6">
-                    {/*<Switch
+                    <Switch
                       checked={editOnRelease}
                       onChange={handleEditOnReleaseChange}
                       label="Edit On Release (Not Implemented Yet)"
@@ -268,18 +276,18 @@ export default function Settings() {
                       onChange={handleResetOnReleaseChange}
                       label="Reset On Release"
                     />*/}
-                    {/*<Switch
+                {/*<Switch
                       checked={disablePreEdit}
                       onChange={handleDisablePreEditChange}
                       label="Disable Pre-Edits"
                     />*/}
-                    {/*<Switch
+                {/*<Switch
                       checked={bubbleBuilds}
                       onChange={handleBubbleBuildsChange}
                       label="Bubble Wrap Builds (Not Implemented Yet)"
-                    />*/}
+                    />
                   </CardContent>
-                </Card>
+                </Card>*/}
               </div>
             </TabsContent>
             <TabsContent value="Developer Settings">

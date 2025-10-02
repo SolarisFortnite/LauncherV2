@@ -109,7 +109,7 @@ export default function Login() {
       }
     };
 
-    checkForUpdates();
+    //checkForUpdates();
   }, []);
 
   const renderUpdateStatus = () => {

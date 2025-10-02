@@ -55,7 +55,7 @@ export default function Sidebar({ page }: { page: { page: string } }) {
     { route: "Home", icon: HiOutlineHome, label: "Home", path: "home" },
     { route: "Library", icon: HiOutlineFolder, label: "Library", path: "library" },
     { route: "Leaderboard", icon: MdOutlineLeaderboard, label: "Leaderboard", path: "leaderboard" },
-    //   { route: "Item Shop", icon: HiOutlineShoppingCart, label: "Item Shop", path: "storefront" },
+    { route: "Item Shop", icon: HiOutlineShoppingCart, label: "Item Shop", path: "storefront" },
     { route: "Servers", icon: HiOutlineServer, label: "Servers", path: "servers" },
   ];
 
@@ -66,11 +66,10 @@ export default function Sidebar({ page }: { page: { page: string } }) {
   };
 
   const getItemClassName = (route: string) => {
-    return `${
-      route === page.page
+    return `${route === page.page
         ? "bg-[#2a1e36]/70 shadow-md shadow-purple-900/10 hover:bg-[#32234a]"
         : "hover:bg-[#1a1225]/60"
-    } p-2.5 rounded-lg transition-all duration-300 w-full flex items-center group`;
+      } p-2.5 rounded-lg transition-all duration-300 w-full flex items-center group`;
   };
 
   const getLabelClass = (route: string) => {
@@ -86,9 +85,8 @@ export default function Sidebar({ page }: { page: { page: string } }) {
   return (
     <div className="h-screen">
       <aside
-        className={`${
-          isCollapsed ? "w-20" : "w-56"
-        } bg-gradient-to-b from-[#0E0316] to-[#110418] h-full shadow-xl transition-all duration-300 relative flex flex-col px-3 py-4`}>
+        className={`${isCollapsed ? "w-20" : "w-56"
+          } bg-gradient-to-b from-[#0E0316] to-[#110418] h-full shadow-xl transition-all duration-300 relative flex flex-col px-3 py-4`}>
         <div className="flex justify-center mb-12">
           <Image
             src="/Solarislogo.png"
@@ -100,9 +98,8 @@ export default function Sidebar({ page }: { page: { page: string } }) {
         </div>
 
         <nav
-          className={`flex flex-col gap-1.5 w-full transition-all duration-300 ${
-            isCollapsed ? "mt-[19vh]" : "mt-1"
-          }`}>
+          className={`flex flex-col gap-1.5 w-full transition-all duration-300 ${isCollapsed ? "mt-[19vh]" : "mt-1"
+            }`}>
           {navItems.map((item) => (
             <div key={item.route} className={getItemClassName(item.route)}>
               <button
@@ -144,9 +141,8 @@ export default function Sidebar({ page }: { page: { page: string } }) {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className={`text-purple-200 transition-all duration-300 ${
-                  isCollapsed ? "rotate-0" : "rotate-180"
-                }`}>
+                className={`text-purple-200 transition-all duration-300 ${isCollapsed ? "rotate-0" : "rotate-180"
+                  }`}>
                 <polyline points="15 18 9 12 15 6"></polyline>
               </svg>
               {!isCollapsed && <span className="text-purple-200 text-xs pr-1">Collapse</span>}
