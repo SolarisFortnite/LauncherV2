@@ -179,11 +179,20 @@ export default function Settings() {
                   </CardHeader>
                   <CardContent className="flex items-center justify-between">
                     <div className="flex items-center space-x-4">
-                      <img
-                        src={auth.user?.profilePicture || "https://github.com/Solarisfortnite/SolarisImages/blob/main/PlaceHolder-icon.png?raw=true"}
-                        alt="Profile picture"
-                        className="w-12 h-12 rounded-full bg-gray-700 text-gray-400 flex items-center justify-center text-xl font-bold"
-                      />
+                      <div className="relative">
+                        <div className="h-15 w-15 rounded-full overflow-hidden flex items-center justify-center">
+                          <img
+                            src={auth.user?.profilePicture || "https://github.com/Solarisfortnite/SolarisImages/blob/main/PlaceHolder-icon.png?raw=true"}
+                            className="rounded-xs scale-x-[1]"
+                            style={{
+                              width: "60px",
+                              height: "60px",
+                            }}
+                            alt="Character"
+                          />
+                        </div>
+                        <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-green-500 border-2 border-black/30" />
+                      </div>
                       <div>
                         <div className="flex items-center space-x-2">
                           <h3 className="text-gray-400 font-semibold">{auth.user?.displayName}</h3>

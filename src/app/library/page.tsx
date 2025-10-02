@@ -109,6 +109,8 @@ export default function Library() {
 
   const builds = Array.from(buildState?.builds?.values() || []);
 
+
+
   return (
     <div className="flex items-center justify-center h-screen">
       <Sidebar page={{ page: "Library" }} />
@@ -119,6 +121,28 @@ export default function Library() {
         className="flex-grow p-8 justify-center min-h-screen">
         <div className="max-w-6xl mx-auto">
           <h1 className="text-3xl font-bold text-white mt-3">Library</h1>
+          <br />
+          <div className="rounded-xl bg-[#2a1e36]/40 shadow-lg backdrop-blur-sm border border-[#3d2a4f]/50 p-2 w-85">
+            <div className="flex items-center gap-1">
+              <div className="relative">
+                <div className="h-20 w-18 rounded-full overflow-hidden flex items-center justify-center">
+                  <img
+                    src={`https://cdn.discordapp.com/attachments/1421650363332825220/1423108913448091740/download.png?ex=68df1cf5&is=68ddcb75&hm=259e9c920793b4a01079f2c1cb4470a36ad2d94767a891745bcccc1ce6c3bd55&`}
+                    className="rounded-xs scale-x-[1]"
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                    }}
+                    alt="Character"
+                  />
+                </div>
+              </div>
+              <div className="flex flex-col">
+                <h3 className="font-medium text-white">Access to Play</h3>
+                <span className="text-xs text-gray-300">Access to play Solaris is open until Friday, at 7:30 EST. We will then restrict launching to donators only as we prepare to release on October 31st.</span>
+              </div>
+            </div>
+          </div>
 
           <br></br>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-3 gap-8">
@@ -130,9 +154,8 @@ export default function Library() {
               return (
                 <div
                   key={index}
-                  className={`bg-[#191b1c]/40 rounded-lg overflow-hidden shadow-lg transition-all duration-300 ${
-                    isActive ? "ring-2 ring-gray-400/40" : "hover:shadow-3xl"
-                  }`}
+                  className={`bg-[#191b1c]/40 rounded-lg overflow-hidden shadow-lg transition-all duration-300 ${isActive ? "ring-2 ring-gray-400/40" : "hover:shadow-3xl"
+                    }`}
                   onMouseEnter={() => setHoveredBuild(build.path)}
                   onMouseLeave={() => setHoveredBuild(null)}>
                   <button
@@ -167,8 +190,8 @@ export default function Library() {
                           {versionNumber <= 10.4
                             ? "Chapter 1"
                             : versionNumber <= 18.4
-                            ? "Chapter 2"
-                            : "Chapter 3"}
+                              ? "Chapter 2"
+                              : "Chapter 3"}
                         </span>
                       </div>
                       <div className="flex justify-between items-center">
@@ -219,6 +242,9 @@ export default function Library() {
             </button>
           } */}
         </div>
+
+
+
       </motion.main>
 
       {isDialogOpen && (
@@ -304,7 +330,7 @@ export default function Library() {
                       {Math.round(
                         downloadProgress.files.length > 0
                           ? (downloadProgress.completed.length / downloadProgress.files.length) *
-                              100
+                          100
                           : 0
                       )}
                       % complete
@@ -315,12 +341,11 @@ export default function Library() {
                     <motion.div
                       initial={{ width: 0 }}
                       animate={{
-                        width: `${
-                          downloadProgress.files.length > 0
-                            ? (downloadProgress.completed.length / downloadProgress.files.length) *
-                              100
-                            : 0
-                        }%`,
+                        width: `${downloadProgress.files.length > 0
+                          ? (downloadProgress.completed.length / downloadProgress.files.length) *
+                          100
+                          : 0
+                          }%`,
                       }}
                       transition={{ type: "spring", damping: 20, stiffness: 60 }}
                       className="h-full rounded-full bg-purple-500"
@@ -334,9 +359,9 @@ export default function Library() {
                       const isCurrentFile =
                         !downloadProgress.completed.includes(file) &&
                         downloadProgress.files.indexOf(file) ===
-                          downloadProgress.files.findIndex(
-                            (f) => !downloadProgress.completed.includes(f)
-                          );
+                        downloadProgress.files.findIndex(
+                          (f) => !downloadProgress.completed.includes(f)
+                        );
 
                       const isLastCompleted =
                         downloadProgress.completed.length === downloadProgress.files.length &&
@@ -361,13 +386,12 @@ export default function Library() {
                             enter: { duration: 0.3 },
                             exit: { duration: 0.2 },
                           }}
-                          className={`flex items-center rounded-lg ${
-                            isError
-                              ? "bg-red-900/30"
-                              : isCompleted
+                          className={`flex items-center rounded-lg ${isError
+                            ? "bg-red-900/30"
+                            : isCompleted
                               ? "bg-[#2a1e36]/80"
                               : "bg-[#2a1e36]/40"
-                          } p-2.5 transition-colors`}>
+                            } p-2.5 transition-colors`}>
                           <div className="mr-3 flex h-8 w-8 items-center justify-center rounded-md bg-[#3d2a4f]/50 text-gray-300">
                             <FileText className="h-4 w-4" />
                           </div>
@@ -380,9 +404,8 @@ export default function Library() {
                               </p>
                               {statusMessage && (
                                 <p
-                                  className={`text-xs mt-1 ${
-                                    isError ? "text-red-400" : "text-gray-400"
-                                  }`}>
+                                  className={`text-xs mt-1 ${isError ? "text-red-400" : "text-gray-400"
+                                    }`}>
                                   {statusMessage}
                                 </p>
                               )}
@@ -448,3 +471,4 @@ export default function Library() {
     </div>
   );
 }
+
